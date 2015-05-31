@@ -12,7 +12,7 @@ ifelse(is_mounted("/system") == "/system", unmount("/system"));
 ifelse(is_mounted("/cache") == "/cache", unmount("/cache"));
 
 ui_print("  ");
-ui_print("Despair Kernel by DespairFactor for hammerhead);
+ui_print("Despair Kernel by DespairFactor for hammerhead");
 ui_print("  ");
 set_progress(0.01);
 
