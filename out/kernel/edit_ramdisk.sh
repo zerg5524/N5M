@@ -67,6 +67,21 @@ sed -i '/\/sys\/sys\/devices\/system\/cpu\/cpufreq\/ondemand\/up_threshold_multi
 sed -i '/\/sys\/sys\/devices\/system\/cpu\/cpufreq\/ondemand\/optimal_freq/d' /tmp/ramdisk/init.hammerhead.rc
 sed -i '/\/sys\/sys\/devices\/system\/cpu\/cpufreq\/ondemand\/sync_freq/d' /tmp/ramdisk/init.hammerhead.rc
 
+#tcp tweaks
+echo "net.ipv4.tcp_rfc1337 = 1" >> /tmp/sysctl.conf
+echo "net.ipv4.tcp_window_scaling = 1" >> /tmp/sysctl.conf
+echo "net.ipv4.tcp_workaround_signed_windows = 1" >> /tmp/sysctl.conf
+echo "net.ipv4.tcp_sack = 1" >> /tmp/sysctl.conf
+echo "net.ipv4.tcp_fack = 1" >> /tmp/sysctl.conf
+echo "net.ipv4.ip_no_pmtu_disc = 0" >> /tmp/sysctl.conf
+echo "net.ipv4.tcp_mtu_probing = 1" >> /tmp/sysctl.conf
+echo "net.ipv4.tcp_frto = 2" >> /tmp/sysctl.conf
+echo "net.ipv4.tcp_frto_response = 2" >> /tmp/sysctl.conf
+echo "net.ipv4.tcp_slow_start_after_idle = 0" >> /tmp/sysctl.conf
+echo 'net.core.wmem_max=12582912' >> /tmp/sysctl.conf
+echo 'net.core.rmem_max=12582912' >> /tmp/sysctl.conf
+echo 'net.ipv4.tcp_rmem= 10240 87380 12582912' >> /tmp/sysctl.conf
+echo 'net.ipv4.tcp_wmem= 10240 87380 12582912' >> /tmp/sysctl.conf
 rm /tmp/ramdisk/boot.img-ramdisk.gz
 rm /tmp/boot.img-ramdisk.gz
 cd /tmp/ramdisk/
